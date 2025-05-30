@@ -1,6 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+import os
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS
+
 latest_location = {}
 
 @app.route('/receive_location', methods=['POST'])
@@ -18,4 +22,5 @@ def get_latest_location():
         return jsonify({'error': 'No location received yet.'}), 404
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
