@@ -7,6 +7,9 @@ CORS(app)  # Enable CORS
 
 latest_location = {}
 
+@app.route('/', methods=['GET'])
+def home():
+    return "Location Share Backend is running!", 200
 
 @app.route('/receive_location', methods=['POST'])
 def receive_location():
