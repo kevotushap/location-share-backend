@@ -7,6 +7,7 @@ CORS(app)  # Enable CORS
 
 latest_location = {}
 
+
 @app.route('/receive_location', methods=['POST'])
 def receive_location():
     global latest_location
